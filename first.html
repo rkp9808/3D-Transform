@@ -1,12 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-gradient-to-br from-gray-900 to-black text-white">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>God-Level Editor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@tailwindcss/forms"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
 </head>
-<body>
-    <h1>GOD LEVEL EDITING</h1>
-    <P>This editing by Ritik Kumar.</P>
+<body class="font-[Fira_Code] p-6">
+
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-4xl font-bold text-center mb-8">⚡ God-Level Editing Page</h1>
+
+    <!-- Toolbar -->
+    <div class="flex justify-between items-center bg-white/10 backdrop-blur-md rounded-xl p-4 mb-4 shadow-xl">
+      <div class="space-x-4">
+        <button onclick="applyCommand('bold')" class="hover:text-yellow-400">🅱️ Bold</button>
+        <button onclick="applyCommand('italic')" class="hover:text-yellow-400">𝑰 Italic</button>
+        <button onclick="applyCommand('underline')" class="hover:text-yellow-400">🅤 Underline</button>
+        <button onclick="applyCommand('insertUnorderedList')" class="hover:text-yellow-400">• List</button>
+        <button onclick="applyCommand('createLink')" class="hover:text-yellow-400">🔗 Link</button>
+      </div>
+      <button onclick="clearEditor()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded-lg shadow">Clear</button>
+    </div>
+
+    <!-- Editor -->
+    <div
+      id="editor"
+      contenteditable="true"
+      class="min-h-[300px] bg-white/5 rounded-2xl p-6 shadow-inner text-lg leading-relaxed outline-none"
+    >
+      Start writing like a god...
+    </div>
+  </div>
+
+  <script>
+    function applyCommand(command) {
+      if (command === "createLink") {
+        const url = prompt("Enter the URL:");
+        document.execCommand(command, false, url);
+      } else {
+        document.execCommand(command, false, null);
+      }
+    }
+
+    function clearEditor() {
+      document.getElementById("editor").innerHTML = "";
+    }
+  </script>
+
 </body>
 </html>
